@@ -1,23 +1,14 @@
-#it should be inside .github/workflows. filename should be anyone
-name: Shell Commands
+#https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions
 
+name: shells
 on: [push]
-
-
-jobs: 
-  run-shell-command:
+jobs:
+  Testing-multiple-shells:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
-        run: echo "Hello World"
-      - name: list files
-        run: ls 
-      - name: get cwd
-        run: pwd
-      - name: get user
-        run: whoami
-      - name: Multiline Script
+      - name: python command
         run: |
-          node -v
-          npm -v 
-          python -v
+          import platform
+          print(platform.processor())
+          print(platform.python_version())
+        shell: python
